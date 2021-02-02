@@ -1,0 +1,13 @@
+<section class="section-margin mt-0">
+    <owl-carousel-o [options]="carouselOption">
+        <ng-template carouselSlide *ngFor="let slide of images" class="hero-carousel">
+            <div class="hero-carousel__slide">
+                <img class="img-fluid" [src]="slide.src" [alt]="slide.text" [title]="slide.text">
+                <a href="#" class="hero-carousel__slideOverlay">
+                    <h3>{{slide.text}}</h3>
+                    <p>{{slide.type}}</p>
+                </a>
+            </div>
+        </ng-template>
+    </owl-carousel-o>
+</section>

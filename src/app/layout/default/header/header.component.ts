@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, HostListener, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
 	selector: 'layout-header',
@@ -20,6 +20,30 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         `
     ]
 })
-export class HeaderComponent {
-	constructor() {}
-}
+export class HeaderComponent implements OnInit {
+
+    @ViewChild('stickyMenu') menuElement!: ElementRef;
+    
+    sticky: boolean = true;
+    elementPosition: any;
+  
+    constructor() { }
+  
+    ngOnInit() {
+    }
+  
+    ngAfterViewInit(){
+        this.elementPosition = this.menuElement.nativeElement.offsetTop+10;
+    }
+  
+    @HostListener('window:scroll', ['$event'])
+    handleScroll(){
+        const windowScroll = window.pageYOffset;
+        if(windowScroll >= this.elementPosition){
+            this.sticky = true;
+        } else {
+            this.sticky = false;
+        }
+    }
+  
+  }

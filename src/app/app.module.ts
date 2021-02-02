@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 //#region ant icon
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
@@ -14,7 +15,6 @@ import * as AllIcons from '@ant-design/icons-angular/icons';
 import { NZ_DATE_LOCALE, NZ_I18N, zh_CN as zorroLang } from 'ng-zorro-antd/i18n';
 import { SharedModule } from './shared/shared.module';
 import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
-import { OwlModule } from 'ngx-owl-carousel';
 import { PagesModule } from './pages/page.module';
 
 const antDesignIcons = AllIcons as {
@@ -33,7 +33,7 @@ const INTERCEPTOR_PROVIDES = [
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,
@@ -43,7 +43,7 @@ const INTERCEPTOR_PROVIDES = [
         PagesModule,
         DemoNgZorroAntdModule,
         BrowserAnimationsModule,
-        OwlModule 
+        CarouselModule 
     ],
     providers: [...INTERCEPTOR_PROVIDES],
     bootstrap: [AppComponent]
