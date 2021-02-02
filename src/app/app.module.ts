@@ -16,6 +16,9 @@ import { NZ_DATE_LOCALE, NZ_I18N, zh_CN as zorroLang } from 'ng-zorro-antd/i18n'
 import { SharedModule } from './shared/shared.module';
 import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
 import { PagesModule } from './pages/page.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuard, ErrorInterceptor, JwtInterceptor } from './_helpers';
+import { NouisliderModule } from 'ng2-nouislider';
 
 const antDesignIcons = AllIcons as {
     [key: string]: IconDefinition;
@@ -24,9 +27,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map((key) => antDesi
 //#endregion
 
 const INTERCEPTOR_PROVIDES = [
-    // AuthGuard,
-    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: NZ_I18N, useValue: en_US },
     { provide: NZ_ICONS, useValue: icons }
 ];
@@ -43,7 +46,8 @@ const INTERCEPTOR_PROVIDES = [
         PagesModule,
         DemoNgZorroAntdModule,
         BrowserAnimationsModule,
-        CarouselModule 
+        CarouselModule,
+        NouisliderModule
     ],
     providers: [...INTERCEPTOR_PROVIDES],
     bootstrap: [AppComponent]

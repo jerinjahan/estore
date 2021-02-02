@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
-
-
+import { NouisliderModule } from 'ng2-nouislider';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
     declarations: [],
@@ -13,6 +13,8 @@ import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 		FormsModule,
 		RouterModule,
         ReactiveFormsModule,
+        CarouselModule,
+        NouisliderModule,
         ...SHARED_ZORRO_MODULES
     ],
     exports : [

@@ -10,23 +10,21 @@ export class SuggestedProductsComponent implements OnInit {
 
     constructor() { }
     carouselOption: OwlOptions = {
+        items: 3,
         margin: 10,
+        autoplay: false,
+        autoplayTimeout: 5000,
         loop: true,
-        mouseDrag: false,
-        touchDrag: false,
-        pullDrag: false,
-        dots: false,
         nav: false,
-        navSpeed: 600,
-        navText: ["<i class='ti-arrow-left'></i>", "<i class='ti-arrow-right'></i>"],
+        dots: false,
         responsive: {
             0: {
-                items: 1 
+                items: 1
             },
-            400: {
+            600: {
                 items: 2
             },
-            760: {
+            810: {
                 items: 3
             }
         }
